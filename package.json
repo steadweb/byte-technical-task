@@ -1,0 +1,22 @@
+{
+  "name": "byte-programming-tests",
+  "version": "0.0.0",
+  "description": "Programming test for Byte",
+  "author": "Luke Steadman <luke@steadweb.co.uk>",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-typescript": "^7.10.1",
+    "@types/jest": "^25.2.3",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {}
+}
