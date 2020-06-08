@@ -1,6 +1,6 @@
 # Performance
 
-I'd move the `StateName` from the `event_data` jsonb column, and create it's own column within the `app_events` table. `state_name` would could be an `enum` of known states and then an index on the `enum` would be created. The query would then be modified like so:
+I'd move the `StateName` from the `event_data` jsonb column, and create it's own column within the `app_events` table. `state_name` would be an `enum` of known states and then an index on the `enum` would be created. The query would then be modified like so:
 
 ```sql
 SELECT COUNT(*) as count FROM app_events
