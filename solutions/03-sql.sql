@@ -7,12 +7,6 @@ BEGIN
 END;
 $$ language plpgsql;
 
-/* Trigger to set updated value and use the above function */
-CREATE TRIGGER set_updated 
-BEFORE UPDATE ON profile_data 
-FOR EACH ROW 
-EXECUTE PROCEDURE updated_timestamp();
-
 /* Enable the uuid-ossp to generate uuid/v4 for ID column */
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
@@ -33,6 +27,12 @@ CREATE TABLE profile_data(
    created TIMESTAMP DEFAULT current_timestamp,
    updated TIMESTAMP NULL
 );
+
+/* Trigger to set updated value and use the above function */
+CREATE TRIGGER set_updated 
+BEFORE UPDATE ON profile_data 
+FOR EACH ROW 
+EXECUTE PROCEDURE updated_timestamp();
 
 /* Example INSERT query for profile_data */
 INSERT INTO profile_data (first_name, last_name, profile_pic, locale, timezone, gender, last_ad_referral) 
