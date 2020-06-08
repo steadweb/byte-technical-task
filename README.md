@@ -13,14 +13,14 @@ You'll need the following installed locally to run the install and run the tests
 
 NPM and Node are required to run this. Run the following commands
 
-```
+```bash
 npm i
 npm test
 ```
 
 Output should be as follows:
 
-```
+```bash
  PASS  src/validateChecksum.test.ts
   validateChecksum
     NUMBER_COMPARE_GENERATOR
