@@ -9,7 +9,7 @@ describe("generateChecksum", () => {
       expect(generateChecksum("1122", NUMBER_COMPARE_GENERATOR)).toBe(3);
     });
 
-    test("a value of 1111 should generate a checksum of 3", () => {
+    test("a value of 1111 should generate a checksum of 4", () => {
       expect(generateChecksum("1111", NUMBER_COMPARE_GENERATOR)).toBe(4);
     });
 
