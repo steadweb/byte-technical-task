@@ -1,4 +1,4 @@
-/* Basic function which is a trigger to automatically the updated column on updated */
+/* Basic function which is a trigger to automatically updated */
 CREATE OR REPLACE FUNCTION updated_timestamp()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -7,7 +7,7 @@ BEGIN
 END;
 $$ language plpgsql;
 
-/* Enable the uuid-ossp to generate uuid/v4 for ID column
+/* Enable the uuid-ossp extension to generate uuid/v4 for ID column
    Note: this requires root privs to enable this
 */
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
