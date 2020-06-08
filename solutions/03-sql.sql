@@ -7,7 +7,9 @@ BEGIN
 END;
 $$ language plpgsql;
 
-/* Enable the uuid-ossp to generate uuid/v4 for ID column */
+/* Enable the uuid-ossp to generate uuid/v4 for ID column
+   Note: this requires root privs to enable this
+*/
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 /** profile_data CREATE TABLE SQL. 
