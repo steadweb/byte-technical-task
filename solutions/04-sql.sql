@@ -21,3 +21,14 @@ VALUES ('6', 2, '123', 'foo', 'foo', '{ "StateName": "reorder" }');
 
 INSERT INTO app_events (bot_id, event_id, aggregate_type, aggregate_id, event_type, event_data)
 VALUES ('6', 3, '123', 'foo', 'foo', '{ "StateName": "reorder-pay" }');
+
+/* Note: I fixed the PRIMARY KEY bug as primary key app_events_pkey (event_id) isn't valid : */
+create table app_events (
+  bot_id text not null,
+  event_id bigserial not null PRIMARY KEY,
+  aggregate_type text not null,
+  aggregate_id text not null,
+  event_type text not null,
+  event_data jsonb not null,
+  created_at timestamp default now() not null
+);
