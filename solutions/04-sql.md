@@ -16,9 +16,11 @@ SQL to create the type and new table with the ENUM
 CREATE TYPE states AS ENUM('reorder', 'reorder-allergy-info', 'reorder-pay');
 ```
 
-Then create the table using the `states` type
+Then create the table using the `states` type (drop the original if required)
 
 ```sql
+DROP TABLE app_events; /* Only reqruied if already created, don't do this in prod, please :) */
+
 CREATE TABLE app_events (
   bot_id text not null,
   event_id bigserial not null PRIMARY KEY,
@@ -47,6 +49,12 @@ PREPARE find_events (text, int) AS
   WHERE state_name IN ('reorder', 'reorder-allergy-info', 'reorder-pay')
   AND bot_id = $1 AND EXTRACT(MONTH FROM created_at) = $2;
 
+```
+
+Usage of `find_events` is exactly the same:
+
+```sql
+EXECUTE find_events('stead-bot', 6);
 ```
 
 #### Optional
