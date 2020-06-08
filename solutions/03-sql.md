@@ -10,7 +10,7 @@ INSERT 0 1
 byte=> SELECT id, first_name, created, updated FROM profile_data;
                   id                  | first_name |          created           |          updated
 --------------------------------------+------------+----------------------------+----------------------------
- e88b0fcd-972e-4b46-a360-6d49792db038 | Luke John  | 2020-06-08 11:29:31.468312 |
+ e88b0fcd-972e-4b46-a360-6d49792db038 | Luke       | 2020-06-08 11:29:31.468312 |
 ```
 
 ## UPDATE
