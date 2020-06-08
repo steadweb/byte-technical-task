@@ -5,6 +5,7 @@ const numberCompareGenerator = (data: string): number => {
   let checksum = 0;
   const digits = formatNumbers(data, "");
 
+  // Could easily be a .reduce function rather than a loop
   digits.forEach((v, k) => {
     const next = digits[k + 1];
 
@@ -23,6 +24,7 @@ const numberCompareGenerator = (data: string): number => {
 const tsvGenerator = (rows: string[]): number => {
   let checksum = 0;
 
+  // Could easily be a .reduce function rather than a loop
   rows.forEach(data => {
     const digits = formatNumbers(data, "	");
 
@@ -51,6 +53,8 @@ const generateChecksum: ChecksumGenerator = (
   data: string | string[],
   version: string = NUMBER_COMPARE_GENERATOR
 ) => {
+  // Because I'm using string | string[] I'm using typeof data
+  // so TS doesn't complain about the types passed to the generators
   if (
     (version === NUMBER_COMPARE_GENERATOR || version === undefined) &&
     typeof data === "string"
@@ -60,6 +64,7 @@ const generateChecksum: ChecksumGenerator = (
   }
 
   if (version === TSV_GENERATOR) {
+    // Mutate the value if it's a string
     if (data && typeof data === "string") {
       data = [data];
     }

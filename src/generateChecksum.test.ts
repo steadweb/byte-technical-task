@@ -49,8 +49,6 @@ describe("generateChecksum", () => {
     });
 
     test("the tsv file 02-general.tsv value should generate a checksum of 32121", () => {
-      let checksum = 0;
-
       const rows = fs
         .readFileSync(path.resolve("02-general.tsv"))
         .toString()
