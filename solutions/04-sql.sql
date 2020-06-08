@@ -7,10 +7,10 @@ AND bot_id = '6' AND EXTRACT(MONTH FROM created_at) = 6;
 PREPARE find_events (text, int) AS
     SELECT COUNT(*) as count FROM app_events 
     WHERE event_data ->> 'StateName' IN ('reorder', 'reorder-allergy-info', 'reorder-pay') 
-    AND bot_id = $1 AND EXTRACT(MONTH FROM created_at) = $2
+    AND bot_id = $1 AND EXTRACT(MONTH FROM created_at) = $2;
 
 /* Example usage of find_events prepared statement */
-EXECUTE find_events('6', 1);
+EXECUTE find_events('6', 6);
 
 /* INSERTS to created dummy data */ 
 INSERT INTO app_events (bot_id, event_id, aggregate_type, aggregate_id, event_type, event_data)
