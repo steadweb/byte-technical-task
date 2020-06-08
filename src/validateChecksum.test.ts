@@ -54,7 +54,7 @@ describe("validateChecksum", () => {
 
     test("the tsv file 02-general.tsv value and checksum of 32121 should return true", () => {
       const rows = fs
-        .readFileSync(path.resolve("02-general.tsv"))
+        .readFileSync(path.resolve("files", "02-general.tsv"))
         .toString()
         .split("\n");
 

@@ -50,7 +50,7 @@ describe("generateChecksum", () => {
 
     test("the tsv file 02-general.tsv value should generate a checksum of 32121", () => {
       const rows = fs
-        .readFileSync(path.resolve("02-general.tsv"))
+        .readFileSync(path.resolve("files", "02-general.tsv"))
         .toString()
         .split("\n");
 
