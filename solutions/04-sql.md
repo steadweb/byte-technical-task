@@ -8,7 +8,7 @@ WHERE state_name IN ('reorder', 'reorder-allergy-info', 'reorder-pay')
 AND bot_id = '6' AND EXTRACT(MONTH FROM created_at) = 6;
 ```
 
-_Note: the prepared query wouldn't need to change as the state_name isn't parameterized_.
+_Note: the prepared statement also needs updating, the command for this is below._
 
 SQL to create the type and new table with the ENUM
 
@@ -21,7 +21,7 @@ Then create the table using the `states` type
 ```sql
 CREATE TABLE app_events (
   bot_id text not null,
-  event_id bigserial not null primary key,
+  event_id bigserial not null PRIMARY KEY,
   aggregate_type text not null,
   aggregate_id text not null,
   event_type text not null,
@@ -31,10 +31,22 @@ CREATE TABLE app_events (
 );
 ```
 
-Finally, create the index on the new `state_name` column:
+Then create the index on the new `state_name` column:
 
 ```sql
 CREATE INDEX state_name ON app_events(state_name);
+```
+
+Finally, `DEALLOCATE` the prepared statement (if required) and create the new version of the above `SELECT`.
+
+```sql
+DEALLOCATE find_events; /* Only reqruied if already allocated */
+
+PREPARE find_events (text, int) AS
+  SELECT COUNT(*) as count FROM app_events
+  WHERE state_name IN ('reorder', 'reorder-allergy-info', 'reorder-pay')
+  AND bot_id = $1 AND EXTRACT(MONTH FROM created_at) = $2;
+
 ```
 
 #### Optional
