@@ -1,7 +1,7 @@
 {
-  "name": "byte-programming-tests",
+  "name": "byte-technical-task",
   "version": "0.0.0",
-  "description": "Programming test for Byte",
+  "description": "Technical task for Byte",
   "author": "Luke Steadman <luke@steadweb.co.uk>",
   "main": "index.js",
   "scripts": {
